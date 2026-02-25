@@ -63,7 +63,8 @@ export async function addUserCredits(userId: string, creditsToAdd: number) {
       .eq("id", userId)
       .single();
 
-    const currentCredits = ((currentUser as any)?.credits_available as number) || 0;
+    const currentCredits =
+      ((currentUser as any)?.credits_available as number) || 0;
     const newCredits = currentCredits + creditsToAdd;
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -98,7 +99,8 @@ export async function deductUserCredits(
 
     if (fetchError) throw fetchError;
 
-    const currentBalance = ((currentUser as any)?.credits_available as number) || 0;
+    const currentBalance =
+      ((currentUser as any)?.credits_available as number) || 0;
     if (currentBalance < creditsToDeduct) {
       throw new Error("Insufficient credits");
     }

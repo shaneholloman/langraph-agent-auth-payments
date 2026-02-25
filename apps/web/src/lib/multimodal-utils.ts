@@ -1,4 +1,5 @@
-import type { Base64ContentBlock } from "@langchain/core/messages";
+import type { Data } from "@langchain/core/messages";
+type Base64ContentBlock = Data.Base64ContentBlock;
 import { toast } from "sonner";
 
 // Returns a Promise of a typed multimodal block for images or PDFs
