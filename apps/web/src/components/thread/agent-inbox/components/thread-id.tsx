@@ -5,7 +5,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import React from "react";
+import { useState, type MouseEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { TooltipIconButton } from "../../tooltip-icon-button";
 
@@ -36,9 +36,9 @@ export function ThreadIdCopyable({
   threadId: string;
   showUUID?: boolean;
 }) {
-  const [copied, setCopied] = React.useState(false);
+  const [copied, setCopied] = useState(false);
 
-  const handleCopy = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleCopy = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     navigator.clipboard.writeText(threadId);
     setCopied(true);

@@ -63,14 +63,16 @@ export async function addUserCredits(userId: string, creditsToAdd: number) {
       .eq("id", userId)
       .single();
 
-    const currentCredits = (currentUser?.credits_available as number) || 0;
+    const currentCredits =
+      ((currentUser as any)?.credits_available as number) || 0;
     const newCredits = currentCredits + creditsToAdd;
 
-    const { error } = await supabase
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { error } = await (supabase as any)
       .from("users")
       .update({
         credits_available: newCredits,
-        subscription_status: "active", // Ensure user has active status when adding credits
+        subscription_status: "active",
       })
       .eq("id", userId);
 
@@ -97,18 +99,18 @@ export async function deductUserCredits(
 
     if (fetchError) throw fetchError;
 
-    const currentBalance = (currentUser?.credits_available as number) || 0;
+    const currentBalance =
+      ((currentUser as any)?.credits_available as number) || 0;
     if (currentBalance < creditsToDeduct) {
       throw new Error("Insufficient credits");
     }
 
     const newCredits = currentBalance - creditsToDeduct;
 
-    const { error } = await supabase
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { error } = await (supabase as any)
       .from("users")
-      .update({
-        credits_available: newCredits,
-      })
+      .update({ credits_available: newCredits })
       .eq("id", userId);
 
     if (error) throw error;

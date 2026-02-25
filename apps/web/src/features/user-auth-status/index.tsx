@@ -1,5 +1,4 @@
 import { useAuthContext } from "@/providers/Auth";
-import React from "react";
 import type { User } from "@/lib/auth/types";
 import { useRouter } from "next/navigation";
 import { Badge } from "@/components/ui/badge";

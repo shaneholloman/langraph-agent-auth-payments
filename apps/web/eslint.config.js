@@ -18,7 +18,13 @@ export default tseslint.config(
       "react-refresh": reactRefresh,
     },
     rules: {
-      ...reactHooks.configs.recommended.rules,
+      // Only the two rules that existed in react-hooks v5; v7 added many React Compiler
+      // rules (refs, set-state-in-effect, purity, etc.) that are incompatible with the
+      // existing codebase patterns.
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn",
+      // New in ESLint 10 — not in original config
+      "no-useless-assignment": 0,
       "@typescript-eslint/no-explicit-any": 0,
       "@typescript-eslint/no-unused-vars": [
         "warn",

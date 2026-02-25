@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect, ChangeEvent } from "react";
 import { toast } from "sonner";
-import type { Base64ContentBlock } from "@langchain/core/messages";
+import type { Data } from "@langchain/core/messages";
+type Base64ContentBlock = Data.Base64ContentBlock;
 import { fileToContentBlock } from "@/lib/multimodal-utils";
 
 export const SUPPORTED_FILE_TYPES = [

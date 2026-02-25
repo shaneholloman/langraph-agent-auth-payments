@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Inter } from "next/font/google";
-import React from "react";
+import type React from "react";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { AuthProvider } from "@/providers/Auth";
 import { CreditsProvider } from "@/providers/Credits";
