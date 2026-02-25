@@ -109,17 +109,15 @@ function PricingContent() {
       setLoading(priceId);
 
       // Create checkout session
-      const { sessionId } = await createCheckoutSession({
+      const { url } = await createCheckoutSession({
         priceId,
         userId: user.id,
         customerEmail: user.email,
       });
 
-      // Redirect to Stripe Checkout using React Stripe JS
-      const { error } = await stripe.redirectToCheckout({ sessionId });
-      if (error) {
-        toast.error(error.message);
-      }
+      // Redirect to Stripe Checkout (redirectToCheckout removed in @stripe/stripe-js v3+)
+      if (!url) throw new Error("No checkout URL returned");
+      window.location.href = url;
     } catch (error) {
       console.error("Failed to create checkout session:", error);
       toast.error("Failed to process your subscription. Please try again.");

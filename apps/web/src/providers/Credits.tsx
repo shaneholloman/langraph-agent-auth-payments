@@ -1,6 +1,6 @@
 "use client";
 
-import React, {
+import {
   createContext,
   useContext,
   useEffect,
@@ -55,7 +55,7 @@ export function CreditsProvider({ children }: { children: ReactNode }) {
         return;
       }
 
-      setCredits((data?.credits_available as number) ?? 0);
+      setCredits(((data as any)?.credits_available as number) ?? 0);
     } catch (err) {
       console.error("Error fetching credits:", err);
       setError("Failed to fetch credits");

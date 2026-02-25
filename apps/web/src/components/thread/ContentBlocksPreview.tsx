@@ -1,5 +1,6 @@
-import React from "react";
-import type { Base64ContentBlock } from "@langchain/core/messages";
+import type React from "react";
+import type { Data } from "@langchain/core/messages";
+type Base64ContentBlock = Data.Base64ContentBlock;
 import { MultimodalPreview } from "./MultimodalPreview";
 import { cn } from "@/lib/utils";
 

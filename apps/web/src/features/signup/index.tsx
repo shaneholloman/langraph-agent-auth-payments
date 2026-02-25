@@ -69,7 +69,7 @@ export default function SignupInterface() {
     } catch (error) {
       if (error instanceof z.ZodError) {
         const newErrors: Partial<Record<keyof SignupFormValues, string>> = {};
-        error.errors.forEach((err) => {
+        error.issues.forEach((err) => {
           if (err.path[0]) {
             newErrors[err.path[0] as keyof SignupFormValues] = err.message;
           }
